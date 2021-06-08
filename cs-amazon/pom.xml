@@ -96,7 +96,7 @@
         <cs-commons.version>0.0.7</cs-commons.version>
         <junit.version>4.13.1</junit.version>
         <aws-sdk.version>1.11.305</aws-sdk.version>
-        <httpcomponents.httpclient.version>4.5.5</httpcomponents.httpclient.version>
+        <httpcomponents.httpclient.version>4.5.13</httpcomponents.httpclient.version>
         <httpcomponents.httpcore.version>4.4.9</httpcomponents.httpcore.version>
         <!--Misc properties-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
