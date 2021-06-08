@@ -94,7 +94,7 @@
         <bouncycastle.version>1.64</bouncycastle.version>
         <spray-json.version>1.3.5</spray-json.version>
         <cs-commons.version>0.0.5</cs-commons.version>
-        <commons-io.version>2.5</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <specs2.version>4.10.2</specs2.version>
         <!--Misc properties-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

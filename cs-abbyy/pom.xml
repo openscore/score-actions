@@ -77,7 +77,7 @@
         <aliyun-java-sdk-core.version>4.0.3</aliyun-java-sdk-core.version>
         <score-content-sdk.version>1.10.7</score-content-sdk.version>
         <cs-commons.version>0.0.5</cs-commons.version>
-        <commons-io.version>2.5</commons-io.version>
+        <commons-io.version>2.7</commons-io.version>
         <!--Misc properties-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
