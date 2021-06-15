@@ -63,6 +63,10 @@ public class DummySSLSocketFactory extends SSLSocketFactory {
         return factory.createSocket(s, i);
     }
 
+    public Socket createSocket() throws IOException {
+        return factory.createSocket();
+    }
+
     public String[] getDefaultCipherSuites() {
         return factory.getSupportedCipherSuites();
     }

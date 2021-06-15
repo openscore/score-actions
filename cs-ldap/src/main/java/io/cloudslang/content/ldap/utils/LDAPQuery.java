@@ -87,6 +87,10 @@ public class LDAPQuery {
         // init the port with the default value
         Address address = new Address(host, Address.PORT_NOT_SET, DEFAULT_PORT);
 
+        CustomSSLSocket.setTunnelHost("asdasd");
+        CustomSSLSocket.setTunnelPort(5467);
+        CustomSSLSocket.setIsSecured(true);
+
         Hashtable<String, String> env = new Hashtable<>();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");
         env.put(Context.PROVIDER_URL, "ldaps://" + address.getHostAndPortForURI());
@@ -98,7 +102,7 @@ public class LDAPQuery {
         env.put(Context.REFERRAL, "ignore");
 
         /******* VERY IMPORTANT LINE - the parameter is the fully qualified name of your socket factory class *********/
-        env.put("java.naming.ldap.factory.socket", "io.cloudslang.content.ldap.utils.DummySSLSocketFactory");
+        env.put("java.naming.ldap.factory.socket", "io.cloudslang.content.ldap.utils.CustomSSLSocket");
 
         return new InitialDirContext(env);
     }
