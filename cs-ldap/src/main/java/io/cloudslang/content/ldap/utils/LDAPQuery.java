@@ -90,6 +90,8 @@ public class LDAPQuery {
         CustomSSLSocket.setTunnelHost("asdasd");
         CustomSSLSocket.setTunnelPort(5467);
         CustomSSLSocket.setIsSecured(true);
+        CustomSSLSocket.setPort(636);
+        CustomSSLSocket.setHost("cs-ldap.cs-ldap.ros.swinfra.net");
 
         Hashtable<String, String> env = new Hashtable<>();
         env.put(Context.INITIAL_CONTEXT_FACTORY, "com.sun.jndi.ldap.LdapCtxFactory");

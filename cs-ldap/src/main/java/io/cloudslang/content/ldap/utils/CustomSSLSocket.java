@@ -14,16 +14,15 @@ import java.net.InetAddress;
 import java.net.Socket;
 
 /**
- *
  * This class creates a tunnel through a proxy server to communicate to/from Active Directory Server using HTTP CONNECT method.
- *
+ * <p>
  * Prerequisites :
  * Client application server has to trust Active Directory server.
- *          If Self signed certificate is used
- *              Client should have self signed certificate of the corresponding Active Direcotry server installed in its JVM
- *          If Public certificate is used
- *              No need to install anything on the client side.
- *      The proxy server should allow HTTP CONNECT method.
+ * If Self signed certificate is used
+ * Client should have self signed certificate of the corresponding Active Direcotry server installed in its JVM
+ * If Public certificate is used
+ * No need to install anything on the client side.
+ * The proxy server should allow HTTP CONNECT method.
  *
  * @author dheeraj.gopali
  */
@@ -39,10 +38,22 @@ public class CustomSSLSocket extends SocketFactory {
      */
     private static int tunnelPort;
 
+    private static int port;
+
+    private static String host;
+
     /**
      * Contains whether secured data or plain data is passed through tunnel.
      */
     private static boolean isSecured;
+
+    public static void setPort(int port) {
+        CustomSSLSocket.port = port;
+    }
+
+    public static void setHost(String host) {
+        CustomSSLSocket.host = host;
+    }
 
     public static void setTunnelHost(String tunnelHost) {
         CustomSSLSocket.tunnelHost = tunnelHost;
@@ -76,6 +87,11 @@ public class CustomSSLSocket extends SocketFactory {
         return localCreateSocket(inetAddress.getHostAddress(), i);
     }
 
+    @Override
+    public Socket createSocket() throws IOException {
+        return localCreateSocket();
+    }
+
     /**
      * Creates a new socket everty time. Based on {#isSecured} attribute, it creates SSLSocket or Simple socket.
      *
@@ -87,7 +103,22 @@ public class CustomSSLSocket extends SocketFactory {
     private Socket localCreateSocket(String host, int port) throws IOException {
         Socket tunnel = new Socket(tunnelHost, tunnelPort);
         doTunnelHandshake(tunnel, host, port);
-        if(isSecured) {
+        if (isSecured) {
+            SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
+            SSLSocket socket = null;
+            //Overlay the tunnel socket with SSL.
+            socket = (SSLSocket) factory.createSocket(tunnel, host, port, true);
+            //Register a callback for handshaking completion event
+            socket.startHandshake();
+            return socket;
+        }
+        return tunnel;
+    }
+
+    private Socket localCreateSocket() throws IOException {
+        Socket tunnel = new Socket(tunnelHost, tunnelPort);
+        doTunnelHandshake(tunnel, host, port);
+        if (isSecured) {
             SSLSocketFactory factory = (SSLSocketFactory) SSLSocketFactory.getDefault();
             SSLSocket socket = null;
             //Overlay the tunnel socket with SSL.
@@ -112,9 +143,8 @@ public class CustomSSLSocket extends SocketFactory {
      * This method does the initial handshake between source and destination via proxy server using CONNECT method.
      *
      * @param tunnel a regular socket to proxy server.
-     * @param host Destination server/Active Directory host name.
-     * @param port Destination server/Active Directory port number.
-     *
+     * @param host   Destination server/Active Directory host name.
+     * @param port   Destination server/Active Directory port number.
      * @throws IOException
      */
     private void doTunnelHandshake(Socket tunnel, String host, int port)
@@ -170,7 +200,7 @@ public class CustomSSLSocket extends SocketFactory {
         }
 
         if (replyStr.toLowerCase().indexOf("200 connection established") == -1) {
-            throw new IOException("Unable to tunnel through "+ tunnelHost + ":" + tunnelPort+ ".  Proxy returns \""
+            throw new IOException("Unable to tunnel through " + tunnelHost + ":" + tunnelPort + ".  Proxy returns \""
                     + replyStr + "\"");
         }
     }
