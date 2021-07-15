@@ -189,6 +189,7 @@ public class SQLInputsValidatorTest {
         assertTrue(isValidDbType(DB2_DB_TYPE));
         assertTrue(isValidDbType(MYSQL_DB_TYPE));
         assertTrue(isValidDbType(POSTGRES_DB_TYPE));
+        assertTrue(isValidDbType(VERTICA_DB_TYPE));
         assertTrue(isValidDbType(CUSTOM_DB_TYPE));
     }
 
@@ -213,6 +214,7 @@ public class SQLInputsValidatorTest {
         assertFalse(isNotValidDbType(DB2_DB_TYPE));
         assertFalse(isNotValidDbType(MYSQL_DB_TYPE));
         assertFalse(isNotValidDbType(POSTGRES_DB_TYPE));
+        assertFalse(isNotValidDbType(VERTICA_DB_TYPE));
         assertFalse(isNotValidDbType(CUSTOM_DB_TYPE));
     }
 

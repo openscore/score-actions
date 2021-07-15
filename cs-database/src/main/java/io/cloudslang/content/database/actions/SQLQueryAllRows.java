@@ -57,14 +57,14 @@ public class SQLQueryAllRows {
     /**
      * @param dbServerName              The hostname or ip address of the database server.
      * @param dbType                    The type of database to connect to
-     *                                  Valid values: Oracle, MSSQL, Sybase, Netcool, DB2, PostgreSQL and Custom.
+     *                                  Valid values: Oracle, MSSQL, Sybase, Netcool, DB2, PostgreSQL, Vertica and Custom.
      *                                  Default value: Oracle
      * @param username                  The username to use when connecting to the server.
      * @param password                  The password to use when connecting to the server.
      * @param instance                  The name instance of MSSQL Server. Leave it blank for default instance.
      *                                  Example: MSSQLSERVER
      * @param dbPort                    The port to connect to.
-     *                                  Valid values: Oracle: 1521, MSSQL: 1433, Sybase: 5000, Netcool: 4100, DB2: 50000, PostgreSQL: 5432.
+     *                                  Default values: Oracle: 1521, MSSQL: 1433, Sybase: 5000, Netcool: 4100, DB2: 50000, PostgreSQL: 5432, Vertica:5433.
      * @param databaseName              The name of the database to connect to.
      * @param authenticationType        The type of authentication used to access the database (applicable only to MSSQL type).
      *                                  Default: sql
@@ -99,7 +99,7 @@ public class SQLQueryAllRows {
      *                                  Example: db.pooling.enable=true
      * @param resultSetType             the result set type. See JDBC folder description for more details.
      *                                  Valid values: TYPE_FORWARD_ONLY, TYPE_SCROLL_INSENSITIVE,TYPE_SCROLL_SENSITIVE.
-     *                                  Default value: TYPE_SCROLL_INSENSITIVE except DB2 which is overridden to TYPE_FORWARD_ONLY
+     *                                  Default value: TYPE_SCROLL_INSENSITIVE except for DB2 and Vertica which is overridden to TYPE_FORWARD_ONLY
      * @param resultSetConcurrency      the result set concurrency. See JDBC folder description for more details.
      *                                  Valid values: CONCUR_READ_ONLY, CONCUR_UPDATABLE
      *                                  Default value: CONCUR_READ_ONLY

@@ -122,6 +122,7 @@ public class SQLInputsUtilsTest {
         assertEquals(DEFAULT_PORT_MSSQL.intValue(), getOrDefaultDBPort(EMPTY, MSSQL_DB_TYPE));
         assertEquals(DEFAULT_PORT_MYSQL.intValue(), getOrDefaultDBPort(EMPTY, MYSQL_DB_TYPE));
         assertEquals(DEFAULT_PORT_PSQL.intValue(), getOrDefaultDBPort(EMPTY, POSTGRES_DB_TYPE));
+        assertEquals(DEFAULT_PORT_VERTICA.intValue(), getOrDefaultDBPort(EMPTY, VERTICA_DB_TYPE));
         assertEquals(DEFAULT_PORT_SYBASE.intValue(), getOrDefaultDBPort(EMPTY, SYBASE_DB_TYPE));
         assertEquals(DEFAULT_PORT_DB2.intValue(), getOrDefaultDBPort(EMPTY, DB2_DB_TYPE));
         assertEquals(DEFAULT_PORT_NETCOOL.intValue(), getOrDefaultDBPort(EMPTY, NETCOOL_DB_TYPE));
@@ -312,6 +313,7 @@ public class SQLInputsUtilsTest {
         assertThat(getDbClassForType(SYBASE_DB_TYPE), instanceOf(SybaseDatabase.class));
         assertThat(getDbClassForType(NETCOOL_DB_TYPE), instanceOf(NetcoolDatabase.class));
         assertThat(getDbClassForType(POSTGRES_DB_TYPE), instanceOf(PostgreSqlDatabase.class));
+        assertThat(getDbClassForType(VERTICA_DB_TYPE), instanceOf(VerticaDatabase.class));
         assertThat(getDbClassForType(DB2_DB_TYPE), instanceOf(DB2Database.class));
         assertThat(getDbClassForType(CUSTOM_DB_TYPE), instanceOf(CustomDatabase.class));
     }
@@ -328,7 +330,7 @@ public class SQLInputsUtilsTest {
         assertThat(getDbEnumForType(MSSQL_DB_TYPE), is(MSSQL));
         assertThat(getDbEnumForType(SYBASE_DB_TYPE), is(SYBASE));
         assertThat(getDbEnumForType(NETCOOL_DB_TYPE), is(NETCOOL));
-        assertThat(getDbEnumForType(POSTGRES_DB_TYPE), is(POSTGRESQL));
+        assertThat(getDbEnumForType(VERTICA_DB_TYPE), is(VERTICA));
         assertThat(getDbEnumForType(DB2_DB_TYPE), is(DB2));
         assertThat(getDbEnumForType(CUSTOM_DB_TYPE), is(CUSTOM));
     }

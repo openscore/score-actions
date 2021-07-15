@@ -755,7 +755,7 @@ public class DBConnectionManager {
     }
 
     public enum DBType {
-        ORACLE, MSSQL, SYBASE, NETCOOL, DB2, MYSQL, POSTGRESQL, CUSTOM
+        ORACLE, MSSQL, SYBASE, NETCOOL, DB2, MYSQL, POSTGRESQL, VERTICA, CUSTOM
     }
 
 }//end DBConnectionManager

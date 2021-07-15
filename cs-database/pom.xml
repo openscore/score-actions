@@ -101,6 +101,8 @@
         <maven.compiler.target>1.7</maven.compiler.target>
         <maven.sources.skip>true</maven.sources.skip>
         <custom.nexus>overwritten_by_ci</custom.nexus>
+        <cloudslang.maven.repo.local>${env.HOME}/.m2/repository</cloudslang.maven.repo.local>
+        <vertica_driver_path>${cloudslang.maven.repo.local}\com\microfocus\vertica\vertica-jdbc\9.1.0-0\vertica-jdbc-9.1.0-0.jar</vertica_driver_path>
     </properties>
 
     <dependencies>
@@ -151,6 +153,13 @@
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.14</version>
+        </dependency>
+        <dependency>
+           <groupId>com.microfocus.vertica</groupId>
+           <artifactId>vertica-jdbc</artifactId>
+           <version>9.1.0-0</version>
+           <scope>system</scope>
+           <systemPath>${vertica_driver_path}</systemPath>
         </dependency>
         <!-- Testing dependencies-->
         <dependency>

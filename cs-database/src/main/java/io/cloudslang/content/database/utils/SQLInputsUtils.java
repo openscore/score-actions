@@ -161,6 +161,9 @@ public class SQLInputsUtils {
         if (DB2_DB_TYPE.equalsIgnoreCase(dbType)) {
             return TYPE_VALUES.get(TYPE_FORWARD_ONLY);
         }
+        if (VERTICA_DB_TYPE.equalsIgnoreCase(dbType)) {
+            return TYPE_VALUES.get(TYPE_FORWARD_ONLY);
+        }
         if (SQLInputsValidator.isValidResultSetType(resultSetType)) {
             return TYPE_VALUES.get(resultSetType);
         }
@@ -232,6 +235,7 @@ public class SQLInputsUtils {
         concurValues.put(DB2_DB_TYPE, DB2_DRIVER);
         concurValues.put(MYSQL_DB_TYPE, MYSQL_JDBC_DRIVER);
         concurValues.put(POSTGRES_DB_TYPE, POSTGRESQL_DRIVER);
+        concurValues.put(VERTICA_DB_TYPE, VERTICA_DRIVER);
         concurValues.put(CUSTOM_DB_TYPE, EMPTY);
         return concurValues;
     }
@@ -246,6 +250,7 @@ public class SQLInputsUtils {
         dbPortsValues.put(DB2_DB_TYPE, DEFAULT_PORT_DB2);
         dbPortsValues.put(MYSQL_DB_TYPE, DEFAULT_PORT_MYSQL);
         dbPortsValues.put(POSTGRES_DB_TYPE, DEFAULT_PORT_PSQL);
+        dbPortsValues.put(VERTICA_DB_TYPE, DEFAULT_PORT_VERTICA);
         dbPortsValues.put(CUSTOM_DB_TYPE, DEFAULT_PORT_CUSTOM);
         return dbPortsValues;
     }
@@ -276,6 +281,7 @@ public class SQLInputsUtils {
         dbForType.put(SYBASE_DB_TYPE, SybaseDatabase.class);
         dbForType.put(NETCOOL_DB_TYPE, NetcoolDatabase.class);
         dbForType.put(POSTGRES_DB_TYPE, PostgreSqlDatabase.class);
+        dbForType.put(VERTICA_DB_TYPE, VerticaDatabase.class);
         dbForType.put(DB2_DB_TYPE, DB2Database.class);
         dbForType.put(CUSTOM_DB_TYPE, CustomDatabase.class);
         return dbForType;
@@ -290,6 +296,7 @@ public class SQLInputsUtils {
         dbTypes.put(SYBASE_DB_TYPE, DBType.SYBASE);
         dbTypes.put(NETCOOL_DB_TYPE, DBType.NETCOOL);
         dbTypes.put(POSTGRES_DB_TYPE, DBType.POSTGRESQL);
+        dbTypes.put(VERTICA_DB_TYPE, DBType.VERTICA);
         dbTypes.put(DB2_DB_TYPE, DBType.DB2);
         dbTypes.put(CUSTOM_DB_TYPE, DBType.CUSTOM);
         return dbTypes;

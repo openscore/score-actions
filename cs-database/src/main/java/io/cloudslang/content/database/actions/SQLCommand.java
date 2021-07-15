@@ -58,12 +58,12 @@ public class SQLCommand {
     /**
      * @param dbServerName              The hostname or ip address of the database server.
      * @param dbType                    The type of database to connect to.
-     *                                  Valid values: Oracle, MSSQL, Sybase, Netcool, DB2, PostgreSQL and Custom.
+     *                                  Valid values: Oracle, MSSQL, Sybase, Netcool, DB2, PostgreSQL, Vertica and Custom.
      * @param username                  The username to use when connecting to the database.
      * @param password                  The password to use when connecting to the database.
      * @param instance                  The name instance (for MSSQL Server). Leave it blank for default instance.
      * @param dbPort                    The port to connect to.
-     *                                  Default values: Oracle: 1521, MSSQL: 1433, Sybase: 5000, Netcool: 4100, DB2: 50000, PostgreSQL: 5432.
+     *                                  Default values: Oracle: 1521, MSSQL: 1433, Sybase: 5000, Netcool: 4100, DB2: 50000, PostgreSQL: 5432, Vertica:5433.
      * @param databaseName              The name of the database.
      * @param authenticationType        The type of authentication used to access the database (applicable only to MSSQL type).
      *                                  Default: sql
