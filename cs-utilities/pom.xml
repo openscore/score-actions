@@ -88,7 +88,7 @@
         <cs-commons.version>0.0.5</cs-commons.version>
         <cs-ssh.version>0.0.44</cs-ssh.version>
         <junit.version>4.13.1</junit.version>
-        <pdfbox.version>2.0.19</pdfbox.version>
+        <pdfbox.version>2.0.24</pdfbox.version>
         <!--Misc properties-->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
